@@ -1,0 +1,44 @@
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.UI;
+using UnityEngine.SceneManagement;
+
+public class GameManager : MonoBehaviour
+{
+    // Start is called before the first frame update
+    Button enButton;
+    Button esButton;
+    public Text title;
+    public string resourceRoute;
+
+    int banLanguage;
+    void Start()
+    {
+        enButton = GameObject.Find("But_En").GetComponent<Button>();
+        esButton = GameObject.Find("But_Es").GetComponent<Button>();
+        title = GameObject.Find("Text_Title").GetComponent<Text>();
+
+        enButton.onClick.AddListener(SetEnglish);
+        esButton.onClick.AddListener(SetSpanish);
+
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        
+    }
+    void SetEnglish()
+    {
+        resourceRoute = "English";
+        SceneManager.LoadScene("PickStoryScene");
+        title.text = "Select a story";
+    }
+    void SetSpanish()
+    {
+        resourceRoute = "Spanish";
+        SceneManager.LoadScene("PickStoryScene");
+        title.text = "Selecciona una historia";
+    }
+}
