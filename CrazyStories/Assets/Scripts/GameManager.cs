@@ -17,11 +17,9 @@ public class GameManager : MonoBehaviour
     {
         enButton = GameObject.Find("But_En").GetComponent<Button>();
         esButton = GameObject.Find("But_Es").GetComponent<Button>();
-        title = GameObject.Find("Text_Title").GetComponent<Text>();
-
+        
         enButton.onClick.AddListener(SetEnglish);
         esButton.onClick.AddListener(SetSpanish);
-
     }
 
     // Update is called once per frame
@@ -32,13 +30,13 @@ public class GameManager : MonoBehaviour
     void SetEnglish()
     {
         resourceRoute = "English";
+        PlayerPrefs.SetString("Resource_Route", resourceRoute);
         SceneManager.LoadScene("PickStoryScene");
-        title.text = "Select a story";
     }
     void SetSpanish()
     {
         resourceRoute = "Spanish";
+        PlayerPrefs.SetString("Resource_Route", resourceRoute);
         SceneManager.LoadScene("PickStoryScene");
-        title.text = "Selecciona una historia";
     }
 }
